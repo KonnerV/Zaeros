@@ -9,5 +9,4 @@ printstr:
     int 0x10 ; calling BIOS interrupt 0x10 to print the current charcter to the screen
     jmp .printchr ; looping back
 .finish:
-    cli ; disables interrupts
-    hlt ; and stops the CPU
+    ret
