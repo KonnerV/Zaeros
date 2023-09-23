@@ -4,9 +4,9 @@ boot:
     mov si, bl_ok
     call printstr
     
-    jmp load_kernel
-
-    jmp $
+    call load_kernel
+    ;jmp enable_pmode
+    ;jmp $
 
 .hlt:
     cli ; clear interrupts
@@ -14,6 +14,8 @@ boot:
 
 %include "boot_print.asm"
 %include "read_kernel.asm"
+%include "enter_prot_mode.asm"
+
 bl_ok: db "KV-Boot [Works]", 0xa, 0xd, 0
 times 510-($-$$) db 0
 ; Boot signature
