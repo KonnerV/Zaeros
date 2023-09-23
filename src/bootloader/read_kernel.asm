@@ -7,6 +7,7 @@ load_kernel:
     mov sp, 0x7c00
     sti
 
+
     xor ax, ax
     int 0x13
     jc .dsk_err
@@ -28,7 +29,10 @@ load_kernel:
 
     mov si, dsk_ok
     call printstr
-    jmp $
+    call enable_pmode
+    call 0x1000 ;8h:0x1000
+    ret
+    ;jmp enable_pmode
 
 .dsk_err:
     mov si, err_msg
