@@ -1,22 +1,40 @@
 [bits 16]
 [org 0x7c00]
+
+KRNL_OFF equ 0x1000
+
 boot:
-    mov si, bl_ok
+    mov dl, 0
+    mov bp, 0x9000
+    mov sp, bp
+
+    mov si, bt_ok
+    call printstr
+
+    call kernel_lfd
+    mov si, lfd_ok
     call printstr
     
-    call load_kernel
-    ;jmp enable_pmode
-    ;jmp $
+    call is_A20
 
-.hlt:
-    cli ; clear interrupts
-    hlt ; stop the CPU
+A20_enabled:
+    mov si, pm_ent
+    call printstr
+    call enter_pmode 
 
-%include "boot_print.asm"
+[bits 32]
+enter_kernel:
+    call KRNL_OFF
+    jmp $
+
+[bits 16]
+bt_ok: db "Bootloader init", 0xa, 0xd, 0
+lfd_ok: db "Kernel loaded from disk", 0xa, 0xd, 0
+pm_ent: db "Entering 32 bit protected mode...", 0xa, 0xd, 0
 %include "read_kernel.asm"
+%include "gdt.asm"
+%include "a20.asm"
 %include "enter_prot_mode.asm"
-
-bl_ok: db "KV-Boot [Works]", 0xa, 0xd, 0
-times 510-($-$$) db 0
-; Boot signature
+%include "biosprint.asm"
+times 510 - ($-$$) db 0
 dw 0xaa55
