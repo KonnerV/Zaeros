@@ -1,4 +1,3 @@
-
 printstr:
 ; Code for printing text to the screen
     ; moving hex 0e into ah. This is required for printing
