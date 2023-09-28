@@ -1,6 +1,7 @@
-void _start(void) {}
+#include "vga_write.h"
 
 void main(void) {
-    char* video_memory = (char*) 0xb8000;
-    *video_memory = 'K';
+    char string[13] = "Hello, World!";
+    vga_writestr(string, get_colour_code(Black, White), sizeof(string));
+    for(;;) {}
 }
