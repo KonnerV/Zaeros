@@ -22,9 +22,31 @@ As of recent, It's recommended that you join my [discord](https://discord.gg/WSx
 Docs will be released when V1.0.0 is released for now you probably have to rely on support from the [discord](https://discord.gg/WSx336WCCe) server if you wish to modify or help develop the OS.
 
 ## Installation && Build
-As this is a very primitive version of the operating system, It is advised that you either find a way to build and run it yourself or you apply to join the developer team and get instructions from us this is due to a proper build system currently being in the works, however, it is expected to be commited to this repository very soon.
+As this is quite primitive there is only the "_build.sh_" file that you can use to compile and run the operating system, though, It is worth noting that work is being done to create a more robust and cross-platform solution.
+### _Linux_
+Compiling for Linux based systems is rather simple:
+First, clone the repository from Github.
+You could do this using git:
+```bash
+git clone https://github.com/KonnerV/KVOS
+```
+Then, build and run it using the _build.sh_ file:
+```bash
+./build.sh
+```
+### _Windows_
+Windows support at the moment is very precarious so this is provided that you either have WSL or another way of emulating a Linux machine.
+Then you follow the same instructions as with the Linux build, though, this may be virtualised under a hypervisor of sorts.
+```bash
+git clone https://github.com/KonnerV/KVOS
+```
+Then, build and run it using the _build.sh_ file:
+```bash
+./build.sh
+```
 
 ## Running and support
-This Operating system current runs in 16-bit unreal mode meaning that it doesn't have support for ARM or RISC-V processors as of yet, though, this is an issue we're actively working to resolve.
+This Operating system current runs in 32-bit protected mode with the A20 Line enabled so mostly all of the memory is avvailable to the kernel.
+However, This Operating System doesn't have support for ARM or RISC-V processors as of yet, though, this is an issue we're actively working to resolve.
 
 I'm currently unsure if it works on real hardware as due to it's primitive nature it has only been ran on a qemu-i386 Virtual Machine, however, In theory it should work on basic x86_64 BIOS CPUs.
