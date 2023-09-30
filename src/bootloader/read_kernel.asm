@@ -1,8 +1,8 @@
 
 kernel_lfd:
     mov bx, KRNL_OFF
-    mov dh, 2
-    mov dl, 0
+    mov dh, 4
+    mov dl, 0x80 ; 0x80 hdd, 0x81 hdd2, 0x00 Floppy-Drive
     pusha
     push dx
 
@@ -15,7 +15,6 @@ kernel_lfd:
     mov al, dh
     mov cl, 0x02
     mov ch, 0x00
-    ; 0x80 hdd 0x81 hdd2
     mov dh, 0x00
     int 0x13
     jc .dsk_err
