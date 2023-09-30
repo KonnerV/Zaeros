@@ -24,7 +24,7 @@ typedef enum {
 } colour8_t;
 
 uint8_t get_colour_code(colour8_t background, colour8_t foreground);
-uint8_t strlen(const char *str);
+void clr_scrn(void);
 void vga_writec(uint8_t chr, uint8_t colour, uint16_t pos);
 void vga_writestr(char str[], uint8_t colour, uint16_t size);
 

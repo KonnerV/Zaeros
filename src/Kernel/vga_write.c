@@ -6,12 +6,10 @@ uint8_t get_colour_code(colour8_t background, colour8_t foreground) {
     return ((uint8_t)background << 4) | (uint8_t)foreground;
 }
 
-uint8_t strlen(const char *str) {
-    uint8_t i = 0;
-    while(str[i] != 0) {
-        i++;
+void clr_scrn(void) {
+    for(int i=0;i<80*25*2;i+=2) {
+        vga_writec(' ', get_colour_code(Black, White), i);
     }
-    return i;
 }
 
 void vga_writec(uint8_t chr, uint8_t colour, uint16_t pos) {
