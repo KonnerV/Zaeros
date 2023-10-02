@@ -14,8 +14,8 @@ static void nosound() {
     outb(0x61, (uint8_t)inb(0x61) & 0xFC);
 }
 
-void beep() {
-    play_sound(1000);
+void beep_at_freq(uint32_t freq) {
+    play_sound(freq);
     for(int i=0;i<100000000;i++) {}
     nosound();
 }
