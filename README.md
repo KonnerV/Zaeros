@@ -47,6 +47,13 @@ Then, build and run it using the _build.sh_ file:
 
 ## Running and support
 This Operating system current runs in 32-bit protected mode with the A20 Line enabled so mostly all of the memory is avvailable to the kernel.
-However, This Operating System doesn't have support for ARM or RISC-V processors as of yet, though, this is an issue we're actively working to resolve.
+However, **This Operating System doesn't have support for ARM or RISC-V processors as of yet**, though, this is an issue we're actively working to resolve.
 
-I'm currently unsure if it works on real hardware as due to it's primitive nature it has only been ran on a qemu-i386 Virtual Machine, however, In theory it should work on basic x86_64 BIOS CPUs.
+I'm currently unsure if it works on real hardware as due to it's primitive nature it has only been ran on a qemu-i386 and qemu-x86_64 Virtual Machine, however, **In theory it should work on basic x86_64 BIOS CPUs**.
+
+| Platform          | Is supported? |
+| :---------------- | ------------: |
+| x86               |           Yes |
+| ARM               |            No |
+| MIPS              |            No |
+| PPC               |            No |
