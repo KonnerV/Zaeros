@@ -21,3 +21,9 @@ void memcpy(char* src, char* dst) {
     }
     return;
 }
+
+int8_t memcmp(char* src, char* dst) {
+    for (uint16_t i=0;i<sizeof(src);i++) {
+        if (src[i] != dst[i]) {return -1;}
+    } return 0;
+}

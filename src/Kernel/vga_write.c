@@ -13,12 +13,12 @@ void clr_scrn(void) {
 }
 
 void vga_writec(uint8_t chr, uint8_t colour, uint16_t pos) {
-    volatile uint8_t* VGA_buffer = (volatile uint8_t*) 0xb8000;
+    volatile char* VGA_buffer = (volatile char*) 0xb8000;
     VGA_buffer[pos] = chr;
     VGA_buffer[pos+1] = colour;
 }
 
-void vga_writestr(char str[], uint8_t colour, uint16_t size) {
+void vga_writestr(const char* str, uint8_t colour, uint16_t size) {
     int pos=0;
     for (int i=0;i<size;i++) {
         vga_writec((uint8_t)str[i], get_colour_code(Black, White), pos);

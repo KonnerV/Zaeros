@@ -1,4 +1,4 @@
 [bits 32]
-[extern main]
-call main
+[extern kernel_main] ; main
+call kernel_main
 jmp $
