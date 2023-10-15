@@ -16,7 +16,7 @@ pmode:
     mov fs, ax
     mov gs, ax
 
-    mov ebp, 0x90000
+    mov ebp, 0x20000
     mov esp, ebp
 
     call enter_kernel
