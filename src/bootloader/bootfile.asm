@@ -5,7 +5,7 @@ KRNL_OFF equ 0x1000
 
 boot:
     mov dl, 0
-    mov bp, 0x9000
+    mov bp, 0x2000
     mov sp, bp
 
     mov si, bt_ok
