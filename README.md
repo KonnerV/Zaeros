@@ -1,7 +1,7 @@
-# KVOS - The hobbyist Operating System
+# ZAEROS - The hobbyist Operating System
 
 ## About
-KV-Operating System is a lightweight kernel and bootloader for hobbyists. This Operating-System is no way able to be used as a daily-driver or even for minimal functionality as of yet, though, I'm working to improve the operating system's functionality.
+Zaeros is a lightweight kernel and bootloader for hobbyists. This Operating-System is no way able to be used as a daily-driver or even for minimal functionality as of yet, though, I'm working to improve the operating system's functionality.
 This Operating System is made as a side-project and only intended for learning purposes, however, you can fork and modify the source code; Even feel free to use it yourself!
 
 The bootloader is made with the intention of being robust and allowing for a more customisable experience. I aim to allow the user to tell the bootloader where their kernel location is and even some other features or possibly even just use the bootloade as the minimal functionality required!
@@ -28,7 +28,7 @@ Compiling for Linux based systems is rather simple:
 First, clone the repository from Github.
 You could do this using git:
 ```bash
-git clone https://github.com/KonnerV/KVOS
+git clone https://github.com/KonnerV/Zaeros
 ```
 Then, build and run it using the _build.sh_ file:
 ```bash
@@ -38,7 +38,7 @@ Then, build and run it using the _build.sh_ file:
 Windows support at the moment is very precarious so this is provided that you either have WSL or another way of emulating a Linux machine.
 Then you follow the same instructions as with the Linux build, though, this may be virtualised under a hypervisor of sorts.
 ```bash
-git clone https://github.com/KonnerV/KVOS
+git clone https://github.com/KonnerV/Zaeros
 ```
 Then, build and run it using the _build.sh_ file:
 ```bash
