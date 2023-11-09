@@ -1,5 +1,9 @@
+#include "pc_spkr.h"
 #include <stdint.h>
-#include "io.h"
+
+extern char inb(uint16_t p);
+extern void outb(uint16_t p, uint8_t data);
+
 static void play_sound(uint32_t freq) {
     uint32_t pit_freq = 1193180 / freq;
     outb(0x43, 0xb6);

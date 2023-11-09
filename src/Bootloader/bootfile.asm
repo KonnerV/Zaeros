@@ -31,10 +31,10 @@ enter_kernel:
 bt_ok: db "Bootloader init", 0xa, 0xd, 0
 lfd_ok: db "Kernel loaded from disk", 0xa, 0xd, 0
 pm_ent: db "Entering 32 bit protected mode...", 0xa, 0xd, 0
-%include "read_kernel.asm"
-%include "gdt.asm"
-%include "a20.asm"
-%include "enter_prot_mode.asm"
-%include "biosprint.asm"
+%include "Bootloader/read_kernel.asm"
+%include "Bootloader/gdt.asm"
+%include "Bootloader/a20.asm"
+%include "Bootloader/enter_prot_mode.asm"
+%include "Bootloader/biosprint.asm"
 times 510 - ($-$$) db 0
 dw 0xaa55
