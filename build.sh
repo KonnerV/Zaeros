@@ -1,21 +1,29 @@
 #!/bin/bash
 
 # Bootloader compilation
-nasm bootfile.asm -f bin -o bootloader.bin
+nasm ./Bootloader/bootfile.asm -f bin -o bootloader.bin
 
 # Kernel compilation
-nasm kernel_entry.asm -f elf -o kernel_entry.o
-gcc -g -m32 -fno-pie -ffreestanding -c kernel.c -o kernel.o
-gcc -g -m32 -fno-pie -ffreestanding -c vga_write.c -o vga_write.o
-gcc -g -m32 -fno-pie -ffreestanding -c io.c -o io.o
-gcc -g -m32 -fno-pie -ffreestanding -c pc_spkr.c -o pc_spkr.o
-gcc -g -m32 -fno-pie -ffreestanding -c string.c -o string.o
+nasm ./Kernel/kernel_entry.asm -f elf -o kernel_entry.o
+nasm -f elf32 ./Kernel/io.asm -o io.o
+nasm -f elf32 ./Kernel/idt/idt.asm -o idtasm.o
+nasm -f elf32 ./Kernel/drivers/keyboard_driver.asm -o keyboard_asm.o
 
-# Linking the Kernel
-ld -m elf_i386 -o krnl.bin -Ttext 0x1000 kernel_entry.o kernel.o io.o string.o pc_spkr.o vga_write.o --oformat binary
+gcc -m32 -ffreestanding -fno-pie -fno-stack-protector -c ./Kernel/kernel.c -o kernel.o
+gcc -m32 -ffreestanding -fno-pie -fno-stack-protector -c ./Kernel/idt/idt.c -o idtc.o
+gcc -m32 -ffreestanding -fno-pie -fno-stack-protector -c ./Kernel/graphics/vga_write.c -o vga_write.o
+gcc -m32 -ffreestanding -fno-pie -fno-stack-protector -c ./Kernel/libk/string.c -o string.o
+gcc -m32 -ffreestanding -fno-pie -fno-stack-protector -c ./Kernel/drivers/pc_spkr.c -o pc_spkr.o
+gcc -m32 -ffreestanding -fno-pie -fno-stack-protector -c ./Kernel/drivers/keyboard.c -o keyboard.o
+
+ld -m elf_i386 -T linker.ld -o krnl.bin kernel_entry.o io.o keyboard_asm.o idtasm.o idtc.o keyboard.o kernel.o vga_write.o string.o pc_spkr.o -z noexecstack
+
+# Creating an ISO with the appropriate size to hold the OS binary data
+dd if=/dev/zero of=zaeros.iso bs=512 count=21
+# Writing the OS binary data into the ISO file
+dd if=./os.bin of=zaeros.iso bs=512 count=21
 
 # Merging the Kernel and Bootloader
 cat bootloader.bin krnl.bin > os.bin
 
-# Emulating it
-qemu-system-x86_64 -hda os.bin
+qemu-system-i386 -hda zaeros.iso -audiodev pa,id=snd0 -machine pcspk-audiodev=snd0
