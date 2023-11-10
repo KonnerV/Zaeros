@@ -13,7 +13,7 @@ kernel_lfd:
 
     mov ah, 0x02
     mov al, dh
-    mov cl, 10;0x02
+    mov cl, 10
     mov ch, 0x00
     mov dh, 0x00
     int 0x13

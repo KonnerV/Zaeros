@@ -19,9 +19,16 @@ void vga_writec(uint8_t chr, uint8_t colour, uint16_t pos) {
 }
 
 void vga_writestr(const char* str, uint8_t colour, uint16_t size) {
-    int pos=0;
     for (int i=0;i<size;i++) {
-        vga_writec((uint8_t)str[i], get_colour_code(Black, White), pos);
-	pos+=2;
+        switch(str[i]) {
+            case 0x0a:
+            position+=(((80*2)*((uint16_t)position/(80*2)+1))-position);
+            break;
+        default:
+            vga_writec((uint8_t)str[i], get_colour_code(Black, White), position);
+	    position+=2;
+	    break;
+        }
     }
 }
+

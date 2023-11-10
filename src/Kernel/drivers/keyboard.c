@@ -22,9 +22,7 @@ void key_handle_f(void) {
         if(key < 0) {
             return;
 	}
-        if(key == 0x1c) {
-            return;
-        }
-        vga_writec(key_map[(uint8_t) key], get_colour_code(Black, Red), 2);
+        vga_writec(key_map[(uint8_t) key], get_colour_code(Black, Red), position);
+        position+=2;
     }
 }

@@ -23,6 +23,8 @@ typedef enum {
     White = 15
 } colour8_t;
 
+static uint16_t position;
+
 uint8_t get_colour_code(colour8_t background, colour8_t foreground);
 void clr_scrn(void);
 void vga_writec(uint8_t chr, uint8_t colour, uint16_t pos);
