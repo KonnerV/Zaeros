@@ -18,12 +18,12 @@ gcc -m32 -ffreestanding -fno-pie -fno-stack-protector -c ./Kernel/drivers/keyboa
 
 ld -m elf_i386 -T linker.ld -o krnl.bin kernel_entry.o io.o keyboard_asm.o idtasm.o idtc.o keyboard.o kernel.o vga_write.o string.o pc_spkr.o -z noexecstack
 
+# Merging the Kernel and Bootloader
+cat bootloader.bin krnl.bin > os.bin
+
 # Creating an ISO with the appropriate size to hold the OS binary data
 dd if=/dev/zero of=zaeros.iso bs=512 count=22
 # Writing the OS binary data into the ISO file
 dd if=./os.bin of=zaeros.iso bs=512 count=22
-
-# Merging the Kernel and Bootloader
-cat bootloader.bin krnl.bin > os.bin
 
 qemu-system-i386 -hda zaeros.iso -audiodev pa,id=snd0 -machine pcspk-audiodev=snd0
