@@ -35,15 +35,7 @@ Then, build and run it using the _build.sh_ file:
 ./build.sh
 ```
 ### _Windows_
-Windows support at the moment is very precarious so this is provided that you either have WSL or another way of emulating a Linux machine.
-Then you follow the same instructions as with the Linux build, though, this may be virtualised under a hypervisor of sorts.
-```bash
-git clone https://github.com/KonnerV/Zaeros
-```
-Then, build and run it using the _build.sh_ file:
-```bash
-./build.sh
-```
+At this current point in time a Windows supported build system is incredibly precarious and continues to be a problem even with bash virtualisers. At a later point in time; I'll implement a simple build system in a more cross platform manner, however, Windows is generally poor when it comes to native Operating System development tooling, so, for now you may attempt to virtualise the build script, though, be warned that it may not work.
 
 ## Running and support
 This Operating system current runs in 32-bit protected mode with the A20 Line enabled so mostly all of the memory is available to the kernel.
