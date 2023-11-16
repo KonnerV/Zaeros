@@ -1,1 +1,6 @@
 /binaries
+
+*.o
+*.bin
+*.out
+*.elf
