@@ -37,6 +37,9 @@ Then, build and run it using the _build.sh_ file:
 ### _Windows_
 At this current point in time a Windows supported build system is incredibly precarious and continues to be a problem even with bash virtualisers. At a later point in time; I'll implement a simple build system in a more cross platform manner, however, Windows is generally poor when it comes to native Operating System development tooling, so, for now you may attempt to virtualise the build script, though, be warned that it may not work.
 
+### _MacOS_
+At this moment in time, I haven't had enough time to write a build system to target MacOS, so, If you use MacOS I do encourage you to take a gander at the "build.sh" and try your best to build it, though, As I had said there will be a cross platform build system.
+
 ## Running and support
 This Operating system current runs in 32-bit protected mode with the A20 Line enabled so mostly all of the memory is available to the kernel.
 However, **This Operating System doesn't have support for ARM or RISC-V processors as of yet**, though, this is an issue we're actively working to resolve.
@@ -49,3 +52,8 @@ I'm currently unsure if it works on real hardware as due to it's primitive natur
 | ARM               |            No |
 | MIPS              |            No |
 | PPC               |            No |
+
+| Firmware          | Is supported? |
+| :---------------- | ------------: |
+| BIOS              |           Yes |
+| UEFI              |            No |
