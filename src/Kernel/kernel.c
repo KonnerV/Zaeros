@@ -6,6 +6,9 @@
 #include "./idt/idt.h"
 #include "./drivers/keyboard.h"
 
+extern void cpuid_c(void);
+extern void outb(uint16_t p, uint8_t data);
+
 IDT_ent_t id_table[256];
 
 void kernel_main(void) {
@@ -16,9 +19,12 @@ void kernel_main(void) {
     idt_init(id_table);
     char idt_msg[] = "IDT [OK]\n";
     vga_writestr(idt_msg, get_colour_code(Black, D_Grey), strlen(idt_msg));
-    initialise_kybrd_driver();
+    outb(0x21, 0xfd);
     char kbd_msg[] = "Keyboard [OK]\n";
     vga_writestr(kbd_msg, get_colour_code(Black, D_Grey), strlen(kbd_msg));
+    cpuid_c();
+    char cpu[] = "CPU [OK]\0";
+    vga_writestr(cpu, get_colour_code(Black, D_Grey), strlen(cpu));
 
     for (;;) {}
 }

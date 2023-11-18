@@ -10,10 +10,6 @@ extern void key_handle(void);
 extern void outb(uint16_t p, uint8_t data);
 extern char inb(uint16_t p);
 
-void initialise_kybrd_driver(void) {
-    outb(0x21, 0xfd);
-}
-
 void key_handle_f(void) {
     outb(0x20, 0x20);
     uint8_t stat = inb(0x64);
