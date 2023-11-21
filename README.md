@@ -57,3 +57,28 @@ I'm currently unsure if it works on real hardware as due to it's primitive natur
 | :---------------- | ------------: |
 | BIOS              |           Yes |
 | UEFI              |            No |
+
+### Operating System Goals/Checklist
+#### _Bootloader_
+ - [ ] UEFI support
+ - [ ] Multi-architecture support
+ - [x] BIOS support
+ - [x] BIOS Boot
+ - [x] BIOS Print
+ - [x] GDT
+ - [x] Loading Kernel from disk
+ - [ ] Loading multiple Kernels dynamically
+ - [x] A20 line
+ - [x] Protected mode
+#### _Kernel_
+ - [x] VGA drivers
+ - [x] PC Speaker
+ - [ ] Sound Blaster 16
+ - [x] IDT
+ - [x] PS2 Keyboard driver
+ - [ ] PS2 Mouse driver
+ - [ ] Virtual 8086
+ - [ ] VESA drivers
+ - [ ] ACPI
+ - [ ] ATA
+ - [ ] ATAPI

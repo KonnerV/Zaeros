@@ -4,7 +4,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-size_t strlen(char* str);
+size_t strlen(const char* str);
 void memset(char* dst, char* data);
 void memcpy(char* src, char* dst);
 int8_t memcmp(char* src, char* dst);
